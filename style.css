@@ -1,0 +1,104 @@
+body{
+    background-color: #fcd6db;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container img {
+    width: 150px; /* Largura da imagem */
+    height: 150px; /* Altura da imagem */
+    margin: 0 10px; /* Espaçamento entre as imagens */
+    max-width: 100%; /* Para garantir que as imagens não ultrapassem o contêiner */
+    height: auto; /* Para manter a proporção da imagem */
+    transition: transform 0.3s ease;
+}
+
+.container img:hover {
+    transform: scale(1.2);
+}
+
+.container .imagem-mais {
+    width: 90px; /* Largura da imagem */
+    height: 90px; /* Altura da imagem */
+    max-width: 100%; /* Para garantir que as imagens não ultrapassem o contêiner */
+    margin-top: 25px;
+}
+
+.painel{
+    margin: auto;
+    align-items: flex-start;
+    background-color: white;
+    width: 1000px;
+    height: 600px;
+    border-radius: 20px;
+    padding-top: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative; /* Adicionamos posição relativa para os elementos filhos terem posição absoluta relativa a este */
+}
+
+.imagem {
+    display: flex;
+    margin-bottom: 60px; /* Espaçamento entre as imagens */
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative; /* Adicionamos posição relativa para os elementos filhos terem posição absoluta relativa a este */
+}
+
+.imagem img {
+    width: 100px; /* Largura das imagens */
+    height: 100px; /* Altura automática para manter a proporção */
+    cursor: pointer; /* Cursor alterado para indicar que a imagem é clicável */
+    transition: transform 0.3s ease;
+}
+
+.imagem img:hover {
+    transform: scale(0.9);
+}
+
+.texto {
+    font-size: 20px;
+    display: none; /* Oculta o texto inicialmente */
+    background-color: hsl(345, 92%, 66%); /* Cor de fundo do retângulo */
+    color: white; /* Cor do texto */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Borda arredondada */
+    /*animation: moveToRight 2s ease-in-out forwards;
+    animation-delay: 0ms;*/
+    max-width: calc(100% - 200px); /* Largura máxima igual à largura do painel, menos o dobro do padding */
+    overflow-wrap: break-word; /* Quebra de palavra para quebrar o texto quando ele exceder o contêiner */
+}
+
+@keyframes moveToRight {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(50px);
+    }
+  }
+
+.texto.ativo {
+    display: block; /* Exibe o texto quando a classe 'ativo' é aplicada */
+}
+
+#seta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px; /* Largura da imagem */
+    height: 70px; /* Altura da imagem */
+    background-image: url('Imagens/seta-direita.png'); /* URL da imagem da seta */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+#seta:hover {
+    transform: scale(1.2);
+}
+
