@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="portugues">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Seta no canto da página -->
+    <a id="seta" href="declaracao.html"></a>
+
+    <!-- Contêiner das imagens -->
+    <div class="container">
+        <img src="Imagens/letra-w.png" alt="Imagem">
+        <img src="Imagens/mais.png" alt="Imagem" class="imagem-mais">
+        <img src="Imagens/letra-l.png" alt="Imagem">
+    </div>
+
+    <!-- Painel com imagens e texto -->
+    <div class="painel">
+        <div class="imagem">
+            <img src="Imagens/play.png" alt="Imagem 1">
+            <div class="texto">Oi, meu amor!! Hoje quero, principalmente, agradecer você por todo o companheirismo. Queria te lembrar que você é uma pessoa super importante pra mim e que te amo muito. Eu sei que às vezes posso ser um pouco complicada, talvez até chata, mas nunca tive alguém que realmente se importasse comigo desse jeitinho que você faz. Eu sempre fui meio na minha, fechada, e é difícil pra mim expressar meus sentimentos como deveria. Enfim, sou um pouquinho complicada mesmo. Porém, você deixa meu mundinho mais colorido e todos os dias aprendo mais e mais com você. Obrigada por me ensinar tanto sobre amor e por me amar do jeitinho que sou. Obrigada por toda atenção e paciência, por tentar me entender mesmo quando eu mesma não me entendo. Obrigada por me apoiar nas horas mais difíceis. Eu juro que tento ser melhor para você. E, um dia, vou ser uma pessoa madura o suficiente. Por enquanto, vou continuar tentando. Eu te admiro muito, sabia? admiro seu jeitinho de falar, de pensar e viver. Nunca -NUNQUINHA- esqueça do carinho que sinto por você, que é infinito. Eu adoro passar meu tempo com você, adoro fazer você rir e adoro seu cheirinho. Ao longo desses dois anos, passamos por tantas coisas, aprendemos, crescemos juntos e vamos continuar grudados por um tempão ainda. Quero ter você ao meu lado para sempre, e espero colecionar muitos momentos felizes juntos. Obrigada, meu amor, por tanto. Eu te amo pra sempre.</div>
+        </div>
+    </div>
+
+    <script>
+        let interval; // Variável para armazenar o intervalo
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const imagens = document.querySelectorAll('.imagem img');
+            
+            imagens.forEach(imagem => {
+                imagem.addEventListener('click', () => {
+                    const textos = document.querySelectorAll('.texto'); // Selecionar todos os textos
+                    textos.forEach(texto => texto.classList.remove('ativo')); // Remover a classe 'ativo' de todos os textos
+                    const texto = imagem.nextElementSibling;
+                    texto.classList.toggle('ativo'); // Alternar a classe 'ativo' do texto associado à imagem clicada
+                    if (texto.classList.contains('ativo')) {
+                        mostrarTextoPalavraPorPalavra(texto.textContent.trim());
+                    } else {
+                        clearInterval(interval); // Limpar o intervalo se o texto estiver oculto
+                    }
+                });
+            });
+        });
+
+        function mostrarTextoPalavraPorPalavra(texto) {
+            const textoElemento = document.querySelector('.texto.ativo');
+            textoElemento.textContent = ''; // Limpa o conteúdo anterior do elemento de texto
+            clearInterval(interval); // Limpar o intervalo anterior
+            const palavras = texto.split(' '); // Divide o texto em palavras
+            let index = 0;
+
+            interval = setInterval(() => {
+                if (index < palavras.length) {
+                    textoElemento.textContent += palavras[index] + ' '; // Adiciona a próxima palavra
+                    index++;
+                } else {
+                    clearInterval(interval); // Limpa o intervalo quando todas as palavras foram exibidas
+                }
+            }, 100); // Intervalo de 200ms entre cada palavra
+        }
+    </script>
+</body>
+</html>
